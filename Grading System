@@ -1,1 +1,58 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
+public class Efrilyn {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        try {
+            
+           System.out.println("=====Grading System=====");
+            System.out.print("Enter your Name: ");
+            String fullname = reader.readLine();
+
+            System.out.println("-----------------");
+            System.out.println("Quiz is 30% of your Grade");
+            System.out.print("Enter Quiz 1: ");
+            Float quiz1 = Float.parseFloat(reader.readLine());
+            System.out.print("Enter Quiz 2: ");
+            Float quiz2 = Float.parseFloat(reader.readLine());
+            System.out.print("Enter Quiz 3: ");
+            Float quiz3 = Float.parseFloat(reader.readLine());
+            Float totalprelimquiz = (quiz1 + quiz2 + quiz3) / 3;
+            System.out.println("Total Prelim Quiz: " + totalprelimquiz);
+
+            System.out.println("-----------------");
+            System.out.println("Class Standing is 30% of your Grade");
+            System.out.print("Attendance: ");
+            Float attendance = Float.parseFloat(reader.readLine());
+            System.out.print("Recitation: ");
+            Float recitation = Float.parseFloat(reader.readLine());
+            System.out.print("Seatwork: ");
+            Float seatwork = Float.parseFloat(reader.readLine());
+            System.out.print("Assignment: ");
+            Float assignment = Float.parseFloat(reader.readLine());
+            Float classstanding = (attendance + recitation + seatwork + assignment) / 4;
+            System.out.println("Total Prelim Class: " + classstanding);
+
+            System.out.println("-----------------");
+            System.out.println("Prelim Exam is 35% of your Grade");
+            System.out.print("Enter your Prelim Exam: ");
+            Double prelimexam = Double.parseDouble(reader.readLine());
+            System.out.println("-----------------");
+
+            Double prelimgrade = (totalprelimquiz * 0.30) + (classstanding * 0.30) + (prelimexam * 0.40);
+      System.out.println("Congrats! " + fullname + " your Prelim Grade is " + prelimgrade);
+            if (prelimgrade >= 75) {
+                System.out.println("REMARK: PASSED");
+            } else {
+                System.out.println("REMARK: FAILED");
+            }
+
+            
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading input: " + e.getMessage());
+        }
+    }
+}
